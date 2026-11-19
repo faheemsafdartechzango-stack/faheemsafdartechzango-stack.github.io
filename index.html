@@ -165,7 +165,11 @@
     <h2>Get in touch</h2>
     <p class="sub">Have a game idea or a project? Send me a message.</p>
     <!-- EDIT: apni email yahan daalo -->
-    <a href="mailto:faheemsafdar893@gmail.com" class="btn primary">✉️ Email me</a>
+    <div class="btns" style="justify-content:center">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faheemsafdar893@gmail.com&su=Game%20project%20inquiry" target="_blank" rel="noopener" class="btn primary">✉️ Email me</a>
+      <button type="button" class="btn ghost" id="copyEmail" style="font:inherit;color:inherit;background:none;cursor:pointer">📋 Copy email</button>
+    </div>
+    <p style="color:var(--muted);margin-top:14px">faheemsafdar893@gmail.com</p>
     <div class="socials">
       <!-- EDIT: apne links yahan daalo -->
       <a href="https://play.google.com/store/apps/developer?id=App+Tech+Solutions" target="_blank">▶ Google Play</a>
@@ -228,6 +232,12 @@ filters.addEventListener('click', e => {
 });
 render();
 document.getElementById('gameCount').textContent = GAMES.length + '+';
+document.getElementById('copyEmail').addEventListener('click', e => {
+  const btn = e.currentTarget, email = 'faheemsafdar893@gmail.com';
+  const done = () => { btn.textContent = '✅ Copied!'; setTimeout(() => btn.textContent = '📋 Copy email', 2000); };
+  if (navigator.clipboard) navigator.clipboard.writeText(email).then(done, () => prompt('Copy this email:', email));
+  else prompt('Copy this email:', email);
+});
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
