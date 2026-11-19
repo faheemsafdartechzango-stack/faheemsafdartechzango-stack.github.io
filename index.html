@@ -75,9 +75,10 @@
   .skill p{color:var(--muted);font-size:.88rem}
 
   /* about */
-  .about{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:center}
-  .avatar{aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:6rem}
+  .about{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:start}
+  .avatar{aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:6rem;margin-top:60px}
   .about p{color:var(--muted);margin-bottom:14px}
+  .chip{padding:6px 12px;border:1px solid var(--line);border-radius:99px;font-size:.85rem;background:var(--card)}
 
   /* contact */
   .contact{text-align:center}
@@ -90,7 +91,7 @@
   @media (max-width:720px){
     .links{display:none}
     .about{grid-template-columns:1fr}
-    .avatar{max-width:220px}
+    .avatar{max-width:220px;margin-top:0}
     .hero{padding:70px 0 60px}
   }
 </style>
@@ -141,7 +142,6 @@
       <div class="skill"><div class="ic">💻</div><h4>C# Programming</h4><p>Clean gameplay systems & tools</p></div>
       <div class="skill"><div class="ic">📱</div><h4>Android Publishing</h4><p>Builds, Play Console, optimisation</p></div>
       <div class="skill"><div class="ic">💰</div><h4>Ads & IAP</h4><p>AdMob, rewarded ads, in-app purchases</p></div>
-      <div class="skill"><div class="ic">📈</div><h4>ASO</h4><p>Store listings, keywords, creatives</p></div>
       <div class="skill"><div class="ic">🎨</div><h4>Game Design</h4><p>Level design, game feel, monetisation loops</p></div>
     </div>
   </div>
@@ -153,8 +153,13 @@
     <div>
       <h2>About Me</h2>
       <!-- EDIT: apne baare mein yahan likho -->
-      <p>Hi! I'm a Unity game developer at TechZango Games. I make casual and hyper-casual mobile games — from puzzle and sorting games to bike stunts and calming ASMR experiences.</p>
-      <p>I handle the full pipeline: idea, prototyping, coding, polishing, ads integration and publishing on Google Play.</p>
+      <p>Hi! I'm a Unity game developer at TechZango Games, building mobile games for Android players around the world. My work covers a wide range of genres — from casual and hyper-casual hits to action-packed experiences.</p>
+      <p>I've developed <strong style="color:var(--text)">shooting games</strong> with responsive controls and satisfying combat, <strong style="color:var(--text)">driving and racing games</strong> with realistic vehicle physics, stunt ramps and offroad tracks, and <strong style="color:var(--text)">simulation games</strong> that let players experience real-world vehicles and activities. Alongside these, I create puzzle, merge, sorting and relaxing ASMR games that keep players coming back.</p>
+      <p>I handle the full development pipeline myself: idea and game design, prototyping, C# coding, level design, UI/UX, performance optimisation for low-end devices, ads and in-app purchase integration, and finally publishing and updating games on Google Play.</p>
+      <p>My goal is simple — make games that are easy to pick up, fun to master and smooth on every device.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px">
+        <span class="chip">🔫 Shooting</span><span class="chip">🚗 Driving & Racing</span><span class="chip">🚜 Simulation</span><span class="chip">🧩 Puzzle</span><span class="chip">🛋️ Merge & Casual</span><span class="chip">🌿 Relaxing & ASMR</span>
+      </div>
       <a href="#contact" class="btn primary" style="display:inline-block;margin-top:10px">Let's work together</a>
     </div>
   </div>
@@ -174,7 +179,6 @@
       <!-- EDIT: apne links yahan daalo -->
       <a href="https://play.google.com/store/apps/developer?id=App+Tech+Solutions" target="_blank">▶ Google Play</a>
      
-      <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">LinkedIn</a>
     </div>
   </div>
 </section>
@@ -189,12 +193,14 @@
      agar img nahi diya to emoji dikhega
    ============================================================ */
 const GAMES = [
-  { title:"Tile Match Games - Tile Puzzle", genre:"Puzzle", pkg:"com.match.tilepuzzle.game", icon:"W3NpZq8_z8YJdVARyQUDPK5LMBlte-G9M-l9EibIWMsvN52oLeXqE-MxQJwsOoo3DavQ_mjRERIwUIvP_-UU", desc:"Match three identical tiles to clear the board in this brain-teasing puzzle." },
-  { title:"Mystery Dumpling: Pop Unbox", genre:"Relaxing", pkg:"com.ats.mystery.dumpling.squishy.toys", icon:"K3ik1WheuAQhidZtuBcVSLv92iT_J3D0jed6QvJnQ_YP989xgzUNzp8SNDJ30ayas-YnJHxx0_fdkkPSVb1Czg", desc:"Unbox and squish cute mystery dumpling toys — pure satisfying fun." },
   { title:"Escape Block - Jam Puzzle Game", genre:"Puzzle", pkg:"com.block.escape.jam.puzzle.games", icon:"Qb_luGwUp4JY-YpirpxTWtO3_n4Agf2w4xjjJ7ky1gt4yL7cB8-O8UTmSKamdizojb0KNxqfR5R5d0RieEUJFw", desc:"Slide the blocks and clear the jam in tricky escape levels." },
+  { title:"Bike Stunt: Extreme Racing", genre:"Racing", pkg:"com.rider.bike.stunt.racing.moto", icon:"ra0xXrBbsCRkRts1Qpw6LD0lAnOXUCZbP4Si48XScWTriBbdbxGTg5ZDNeQyrQL3SU6xpaz52Wazmxfgx4wusw", desc:"Pull off insane bike stunts on extreme ramps and tracks." },
+  { title:"Car Stunt - Superhero Racing", genre:"Racing", pkg:"com.car.stunt.extreme.racing.ramps.simulator.racing", icon:"P24YALjK6l2FG98IchU6n2dfrkTonWSYA-025_toTrTLKbH15Kcpe2AzLOvSMNv10lNjolOImGw6-sbm9G02", desc:"Race superhero cars over mega ramps and stunt tracks." },
   { title:"Mini Games - Calm & Relax", genre:"Relaxing", pkg:"ats.com.mini.games.calm.relax.challenges", icon:"ULvZYHe3h8NIJJZkXzCvYN2TV_u08U89oMvjBg908fGey4q9ROBi0YXYIq4kRM3ov1KqLA0qHlIhrfWFekLw_g", desc:"A collection of relaxing mini games and challenges to unwind." },
-  { title:"Word Search Game - Word Puzzle", genre:"Puzzle", pkg:"com.word.search.quest.game", icon:"-YezqIShxfPVoiWVkJGIZAlnYSFyuSCdmLXw0TL_Q352o_e38Miw5KEvP8BZ7uiEHP_RC0x_NRsTh3MePE_j4g", desc:"Find hidden words across hundreds of themed puzzle grids." },
+  { title:"Mystery Dumpling: Pop Unbox", genre:"Relaxing", pkg:"com.ats.mystery.dumpling.squishy.toys", icon:"K3ik1WheuAQhidZtuBcVSLv92iT_J3D0jed6QvJnQ_YP989xgzUNzp8SNDJ30ayas-YnJHxx0_fdkkPSVb1Czg", desc:"Unbox and squish cute mystery dumpling toys — pure satisfying fun." },
   { title:"Fashion Makeover - Dress Up", genre:"Casual", pkg:"com.ats.fashion.dressup.makeover.girl.style", icon:"lAGKGFAdJ8cnZZK2DSCW5imtBfvnwwG8iBayjBCX35km12qnisw3MM_BTulHqSp60zMLnPnBajx6xeQgrqgrJpE", desc:"Style outfits, makeup and hair for stunning fashion makeovers." },
+  { title:"Tile Match Games - Tile Puzzle", genre:"Puzzle", pkg:"com.match.tilepuzzle.game", icon:"W3NpZq8_z8YJdVARyQUDPK5LMBlte-G9M-l9EibIWMsvN52oLeXqE-MxQJwsOoo3DavQ_mjRERIwUIvP_-UU", desc:"Match three identical tiles to clear the board in this brain-teasing puzzle." },
+  { title:"Word Search Game - Word Puzzle", genre:"Puzzle", pkg:"com.word.search.quest.game", icon:"-YezqIShxfPVoiWVkJGIZAlnYSFyuSCdmLXw0TL_Q352o_e38Miw5KEvP8BZ7uiEHP_RC0x_NRsTh3MePE_j4g", desc:"Find hidden words across hundreds of themed puzzle grids." },
   { title:"Frog Hole io - Eat & Grow", genre:"Arcade", pkg:"com.ats.frog.hole.io.eat.world", icon:"_cByxy3kgK4Yk9YkcMmry1Aw9BB55mWDG23ZyEqx6xtkAe3Wi29pOe93fFoZx5xZuzHZggbx21gkb0ff6WJPe_c", desc:"Swallow everything in sight, grow bigger and rule the map." },
   { title:"Cube Blast - Kubo Busters", genre:"Puzzle", pkg:"com.ats.cube.blast.kubo.busters.puzzle", icon:"5hmQTMzvBKTpKb7W2xbL-5xCqlwqbq5Nb2OzluwhJw1OIXFI8X-Dl1CdG7k2Ub1VCHU3AvX3QtYLEOsQfhdK", desc:"Blast colourful cubes and bust through explosive levels." },
   { title:"Room Merge Game: Home Design", genre:"Casual", pkg:"com.home.decore.merge.game", icon:"_tfTYtt6EftH7lbOuYM9nyrteTCSg455jitOio4HxxbXsj5h2foMHtSN8v47ATFTj_J_quOnxbd8kOK0FSq7", desc:"Merge items to design and decorate beautiful, cozy rooms." },
@@ -202,8 +208,6 @@ const GAMES = [
   { title:"Happy Glass: Draw & Fill", genre:"Puzzle", pkg:"com.ats.smiling.fill.glass.happy.water", icon:"utx3mOBLjP8SC58_EG9HeFmfxu_G2bAebnSWzdX0ADf5jRWtjXs3hjMYd9yToCpxRXI_kArwKjZe3Br-myj7BQ", desc:"Draw lines to guide the water and fill the glass." },
   { title:"Arrow Escape Game: Train Out", genre:"Puzzle", pkg:"com.train.out.puzzle.neon.arrow.escape.game", icon:"wFMnPmw1aKe_b-2GPIneldaVBU48sPorIGe_ls0HOPdUYsi9oevnrX5VXxdpCxYoY_jLi7K5YayHQ8E0gpmUZw", desc:"Guide the neon arrows out in the right order to escape." },
   { title:"Antistress Toys Relaxing Game", genre:"Relaxing", pkg:"com.antistress.relaxing.mini.asmr.toys", icon:"_bT8PFCrK2tdZtraw9odRzJgLjI-B93Qagnfn9dsEIw-aijN4Yt46mk0rWQLDWOsN-dtKRK-3yBh1YcU_nGi", desc:"Pop-its, fidgets and ASMR toys to melt stress away." },
-  { title:"Bike Stunt: Extreme Racing", genre:"Racing", pkg:"com.rider.bike.stunt.racing.moto", icon:"ra0xXrBbsCRkRts1Qpw6LD0lAnOXUCZbP4Si48XScWTriBbdbxGTg5ZDNeQyrQL3SU6xpaz52Wazmxfgx4wusw", desc:"Pull off insane bike stunts on extreme ramps and tracks." },
-  { title:"Car Stunt - Superhero Racing", genre:"Racing", pkg:"com.car.stunt.extreme.racing.ramps.simulator.racing", icon:"P24YALjK6l2FG98IchU6n2dfrkTonWSYA-025_toTrTLKbH15Kcpe2AzLOvSMNv10lNjolOImGw6-sbm9G02", desc:"Race superhero cars over mega ramps and stunt tracks." },
   { title:"4x4 Offroad Jeep Driving", genre:"Racing", pkg:"com.ats.offroad.jeep.simulator.driving.game", icon:"7Me2rA6dOQd-jEE7mFxETe_yF2KvwrRZomv55KZVXCX2J7O8BPUGa6qA65QV5j-AI74_tZgjGC2RCJsc3dMJoJU", desc:"Drive powerful 4x4 jeeps across rough offroad terrain." },
 ];
 
